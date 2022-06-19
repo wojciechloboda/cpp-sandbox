@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/lobod/CLionProjects/decorator/drink.cpp
+iostream
+-
+memory
+-
+
+C:/Users/lobod/CLionProjects/decorator/factory.cpp
+iostream
+-
+memory
+-
+
+C:/Users/lobod/CLionProjects/decorator/main.cpp
+iostream
+-
+memory
+-
+drink.cpp
+C:/Users/lobod/CLionProjects/decorator/drink.cpp
+factory.cpp
+C:/Users/lobod/CLionProjects/decorator/factory.cpp
+
