@@ -3,6 +3,7 @@
 //Diffrent coffees can be composed with decorators as shown in main
 
 #include<iostream>
+#include<memory>
 
 using namespace std;
 
@@ -37,9 +38,9 @@ public:
 
 class CreamDecorator : public Drink{
 public:
-    Drink* drink;
+    std::shared_ptr<Drink> drink;
 
-    CreamDecorator(Drink* d){
+    CreamDecorator(std::shared_ptr<Drink> d){
         this->drink = d;
         this->koszt = 0.20;
         this->opis = "Mleko";
@@ -52,24 +53,16 @@ public:
     string getOpis() override{
         return this->drink->getOpis() + " " + this->opis;
     }
-
-    ~CreamDecorator(){
-        delete this->drink;
-    }
 };
 
 class SugarDecorator : public Drink{
 public:
-    Drink* drink;
-    SugarDecorator(Drink* d){
+    std::shared_ptr<Drink> drink;
+    SugarDecorator(std::shared_ptr<Drink> d){
         this->opis = "Cukier";
         this->koszt = 0.7;
         this->drink = d;
     }
-    ~SugarDecorator(){
-        delete this->drink;
-    }
-
     double getKoszt() override{
         return this->koszt + this->drink->getKoszt();
     }
@@ -80,15 +73,5 @@ public:
 };
 
 
-int main(){
-    Drink* napoj = new Coffee();
-    napoj = new CreamDecorator(napoj);
-    napoj = new SugarDecorator(napoj);
-    napoj = new SugarDecorator(napoj);
 
-    cout << napoj->getOpis() << endl;
-    cout << napoj->getKoszt() << endl;
-
-    delete napoj;
-}
 
